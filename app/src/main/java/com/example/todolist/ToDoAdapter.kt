@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todolist.databinding.ItemTodoBinding
+import android.graphics.Color
 
 class ToDoAdapter(
     private val todos: MutableList<ToDo>
@@ -37,9 +38,13 @@ class ToDoAdapter(
 
     private fun toggleStrikeThrough(tvTodoTitle: TextView, isChecked: Boolean) {
         if (isChecked) {
-            tvTodoTitle.paintFlags = tvTodoTitle.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+            tvTodoTitle.paint.isStrikeThruText = true
+            tvTodoTitle.setTextColor(Color.parseColor("#FF6B6B"))
+            tvTodoTitle.alpha = 0.5f
         } else {
-            tvTodoTitle.paintFlags = tvTodoTitle.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+            tvTodoTitle.paint.isStrikeThruText = false
+            tvTodoTitle.setTextColor(Color.WHITE)
+            tvTodoTitle.alpha = 1f
         }
     }
 

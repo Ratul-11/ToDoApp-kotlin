@@ -1,11 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="8dp"
+    android:background="@drawable/bg_main">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/headerCard"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#2F80ED"
+            android:padding="16dp">
+
+            <!-- Main Text -->
+            <TextView
+                android:id="@+id/tvHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Make your to do list"
+                android:fontFamily="@font/rubik_bold"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <!-- Bottom Right Text -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="By Ratul"
+                android:fontFamily="@font/rubik_regular"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"/>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
 
 
     <ProgressBar
@@ -22,47 +65,96 @@
         android:id="@+id/rvTodoItems"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/bottomBar"
+        android:layout_marginTop="-20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:clipToPadding="false"
+        android:paddingTop="24dp"
+        app:layout_constraintBottom_toTopOf="@id/bottomCard"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerCard"
         app:layout_constraintVertical_bias="1.0" />
 
-    <LinearLayout
-        android:id="@+id/bottomBar"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/bottomCard"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_margin="12dp"
+
+        app:cardCornerRadius="20dp"
+        app:cardElevation="6dp"
+        app:cardBackgroundColor="#CC1E293B"
+
+        app:cardUseCompatPadding="false"
+        app:cardPreventCornerOverlap="false"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <EditText
-            android:id="@+id/etTodoList"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:id="@+id/bottomBar"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="Enter to do Title" />
+            android:orientation="vertical"
+            android:padding="10dp">
 
-        <Button
-            android:id="@+id/AddbtnToDoList"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Add" />
+            <!-- EditText (top row) -->
+            <EditText
+                android:id="@+id/etTodoList"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:hint="Enter to do Title"
+                android:fontFamily="@font/rubik_regular"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#B0BEC5"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:background="#2A3A4A"/>
 
-        <Button
-            android:id="@+id/DeletebtnToDoList"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Delete" />
+            <!-- Buttons row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
 
-        <Button
-            android:id="@+id/btnFetchApi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Fetch" />
+                <Button
+                    android:id="@+id/AddbtnToDoList"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:text="Add"
+                    android:backgroundTint="#2F80ED"
+                    android:textColor="#FFFFFF"
+                    android:fontFamily="@font/rubik_regular"/>
 
-    </LinearLayout>
+                <Button
+                    android:id="@+id/btnFetchApi"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:text="Fetch"
+                    android:backgroundTint="#2F80ED"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginStart="6dp"
+                    android:fontFamily="@font/rubik_regular"/>
 
+                <Button
+                    android:id="@+id/DeletebtnToDoList"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:text="Delete"
+                    android:backgroundTint="#E60023"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginStart="6dp"
+                    android:fontFamily="@font/rubik_regular"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
